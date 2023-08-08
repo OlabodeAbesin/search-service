@@ -72,9 +72,7 @@ php artisan test
 2. Access the API at `http://127.0.0.1:8000` using your preferred API client (e.g., Postman).
 
 Two endpoints are exposed as below:
-
-
-<img width="1015" alt="Screenshot 2023-08-08 at 12 46 55" src="https://github.com/OlabodeAbesin/search-service/assets/22768889/dee6b0fb-ce70-4f6f-a17d-bfd991dc55dc">
-
+<img width="1015" alt="Screenshot 2023-08-08 at 12 46 55" src="https://github.com/OlabodeAbesin/search-service/assets/22768889/d9e58f31-f12c-41e9-b927-2470da8b3da9">
 ![Uploading Screenshot 2023-08-08 at 13.26.18.png…]()
+
 
