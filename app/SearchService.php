@@ -10,7 +10,7 @@ class SearchService
     public function searchParkingSpaces($boundingBox)
     {
         $results = [];
-        ParkingSpace::whereBetween('lat', [$boundingBox['se_lat'], $boundingBox['nw_lat']])
+        ParkingSpace::with('owner')->whereBetween('lat', [$boundingBox['se_lat'], $boundingBox['nw_lat']])
             ->whereBetween('lng', [$boundingBox['nw_lng'], $boundingBox['se_lng']])
             ->get()
             ->each(function ($model) use (&$results) {
@@ -22,7 +22,7 @@ class SearchService
     public function searchParkAndRide($boundingBox)
     {
         $results = [];
-        ParkAndRide::whereBetween('lat', [$boundingBox['se_lat'], $boundingBox['nw_lat']])
+        ParkAndRide::with('owner')->whereBetween('lat', [$boundingBox['se_lat'], $boundingBox['nw_lat']])
             ->whereBetween('lng', [$boundingBox['nw_lng'], $boundingBox['se_lng']])
             ->get()
             ->each(function ($model) use (&$results) {
@@ -56,7 +56,7 @@ class SearchService
      * @param  $degrees
      * @return float
      */
-    public static function degrees2Radians($degrees)
+    private static function degrees2Radians($degrees)
     {
         return pi() * $degrees / 180.0;
     }
@@ -67,7 +67,7 @@ class SearchService
      * @param  $radians
      * @return float
      */
-    public static function rad2deg($radians)
+    private static function rad2deg($radians)
     {
         return 180.0 * $radians / pi();
     }
@@ -78,7 +78,7 @@ class SearchService
      * @param  $lat
      * @return float
      */
-    public static function WGS84EarthRadius($lat)
+    private static function WGS84EarthRadius($lat)
     {
         $An = self::WGS84_A * self::WGS84_A * cos($lat);
         $Bn = self::WGS84_B * self::WGS84_B * sin($lat);
