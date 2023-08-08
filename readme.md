@@ -1,4 +1,4 @@
-```markdown
+```
 # Parking Search Service
 
 The Parking Search Service is a Laravel application that provides an API for searching and ranking parking spaces and park-and-ride locations based on user coordinates.
@@ -53,6 +53,13 @@ The Parking Search Service is a Laravel application that provides an API for sea
    ```shell
    php artisan migrate --seed
    ```
+### Testing
+
+Run the unit tests:
+
+```shell
+php artisan test
+```
 
 ### Usage
 
@@ -62,12 +69,14 @@ The Parking Search Service is a Laravel application that provides an API for sea
    php artisan serve
    ```
 
-2. Access the API at `http://127.0.0.1:8000/api/search` using your preferred API client (e.g., Postman).
+2. Access the API at `http://127.0.0.1:8000` using your preferred API client (e.g., Postman).
 
-### Testing
+Two endpoints are exposed as below:
 
-Run the unit tests:
 
-```shell
-php artisan test
-```
+
+<img width="1007" alt="Screenshot 2023-08-08 at 12 46 31" src="https://github.com/OlabodeAbesin/search-service/assets/22768889/c4d1ebb0-2ec9-41d6-9b53-dff8d79cddf9">
+
+
+![Uploading Screenshot 2023-08-08 at 12.46.55.png…]()
+
