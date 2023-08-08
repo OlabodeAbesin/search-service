@@ -6,8 +6,8 @@ use App\Gateways\ParkAndRideRankerGateway;
 use App\Gateways\ParkingSpaceRankerGateway;
 use App\ParkAndRide;
 use App\ParkingSpace;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class SearchControllerTest extends TestCase
 {
@@ -23,12 +23,14 @@ class SearchControllerTest extends TestCase
         app()->singleton(ParkAndRideRankerGateway::class, function () {
             $rankerGateway = $this->getMockBuilder(ParkAndRideRankerGateway::class)->disableOriginalConstructor()->getMock();
             $rankerGateway->method('rank')->willReturnArgument(0);
+
             return $rankerGateway;
         });
 
         app()->singleton(ParkingSpaceRankerGateway::class, function () {
             $rankerGateway = $this->getMockBuilder(ParkingSpaceRankerGateway::class)->disableOriginalConstructor()->getMock();
             $rankerGateway->method('rank')->willReturnArgument(0);
+
             return $rankerGateway;
         });
 
@@ -61,13 +63,13 @@ class SearchControllerTest extends TestCase
         $response->assertStatus(200);
         $this->assertEquals(json_encode([
             [
-                "description" => "Park and Ride to disneyland. (approx 10 minutes to destination)",
-                "location_name" => "TCR"
+                'description' => 'Park and Ride to disneyland. (approx 10 minutes to destination)',
+                'location_name' => 'TCR',
             ],
             [
-                "description" => "Parking space with 2 bays: Driveway off street",
-                "location_name" => "Oxford Street, London"
-            ]
+                'description' => 'Parking space with 2 bays: Driveway off street',
+                'location_name' => 'Oxford Street, London',
+            ],
         ]), $response->getContent());
     }
 }
