@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\SearchController;
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------

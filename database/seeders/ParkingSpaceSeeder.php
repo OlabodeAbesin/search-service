@@ -15,7 +15,7 @@ class ParkingSpaceSeeder extends Seeder
     public function run()
     {
         ParkingSpace::factory()
-        ->count(50)
-        ->create();
+            ->count(50)
+            ->create();
     }
 }

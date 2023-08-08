@@ -12,8 +12,11 @@ use App\ThirdParty\ParkingSpaceHttpService;
 class SearchController extends Controller
 {
     private $parkingSpaceRankerGateway;
+
     private $parkAndRideRankerGateway;
+
     private $parkingSpaceHttpService;
+
     private $parkAndRideSDK;
 
     public function __construct(
@@ -28,27 +31,26 @@ class SearchController extends Controller
         $this->parkAndRideSDK = $parkAndRideSDK;
     }
 
-
     public function index(
         SearchService $searchService,
         SearchDetailsRequest $searchDetailsRequest
     ) {
-         // @todo Part 3) validate lat long (Done)
-         $boundingBox = $searchService->getBoundingBox($searchDetailsRequest->lat, $searchDetailsRequest->lng, 5);
-         $parkingSpaces = $searchService->searchParkingSpaces($boundingBox);
-         $parkAndRide = $searchService->searchParkAndRide($boundingBox);
- 
-         // Rank 'park and rides' using ParkAndRideRankerGateway
-         $rankedParkAndRide = $this->parkAndRideRankerGateway->rank($parkAndRide);
+        // @todo Part 3) validate lat long (Done)
+        $boundingBox = $searchService->getBoundingBox($searchDetailsRequest->lat, $searchDetailsRequest->lng, 5);
+        $parkingSpaces = $searchService->searchParkingSpaces($boundingBox);
+        $parkAndRide = $searchService->searchParkAndRide($boundingBox);
 
-         // Rank the parking spaces based on the returned IDs using ParkingSpaceRankerGateway
-         $rankedParkingSpaces = $this->parkingSpaceRankerGateway->rank($parkingSpaces);         
- 
-         // Merge the ranked 'park and rides' and parking spaces
-         $resultArray = array_merge($rankedParkAndRide, $rankedParkingSpaces);
- 
-         // @todo Part 3)  N+1 queries inside the resource transformer (Done)
-         return \App\Http\Resources\Location::collection(collect($resultArray));
+        // Rank 'park and rides' using ParkAndRideRankerGateway
+        $rankedParkAndRide = $this->parkAndRideRankerGateway->rank($parkAndRide);
+
+        // Rank the parking spaces based on the returned IDs using ParkingSpaceRankerGateway
+        $rankedParkingSpaces = $this->parkingSpaceRankerGateway->rank($parkingSpaces);
+
+        // Merge the ranked 'park and rides' and parking spaces
+        $resultArray = array_merge($rankedParkAndRide, $rankedParkingSpaces);
+
+        // @todo Part 3)  N+1 queries inside the resource transformer (Done)
+        return \App\Http\Resources\Location::collection(collect($resultArray));
     }
 
     public function details(SearchService $searchService, SearchDetailsRequest $searchDetailsRequest)
@@ -58,7 +60,7 @@ class SearchController extends Controller
         $parkingSpaces = $searchService->searchParkingSpaces($boundingBox);
         $parkAndRide = $searchService->searchParkAndRide($boundingBox);
 
-        return response()->json($this->formatLocations($parkAndRide, $parkingSpaces)); /*@todo Part 1 Done) */ 
+        return response()->json($this->formatLocations($parkAndRide, $parkingSpaces)); /*@todo Part 1 Done) */
     }
 
     private function formatLocations(array $parkAndRide, array $parkingSpaces)

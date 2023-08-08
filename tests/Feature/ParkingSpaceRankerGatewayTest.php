@@ -2,14 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Gateways\ParkAndRideRankerGateway;
 use App\Gateways\ParkingSpaceRankerGateway;
-use App\ParkAndRide;
 use App\ParkingSpace;
 use App\ThirdParty\ParkingSpaceHttpService;
 use App\ThirdParty\TimeoutException;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ParkingSpaceRankerGatewayTest extends TestCase
 {

@@ -2,7 +2,6 @@
 
 namespace App\Gateways;
 
-use App\ThirdParty\ParkAndRide\RankingRequest;
 use App\ThirdParty\ParkingSpaceHttpService;
 use Illuminate\Support\Facades\Log;
 
@@ -32,7 +31,7 @@ class ParkingSpaceRankerGateway
             // Convert the sorted IDs from the response to an array
             $ranking = json_decode($rankedResponse->getBody(), true);
 
-            Log::info('Got ranking: ' . json_encode($ranking));
+            Log::info('Got ranking: '.json_encode($ranking));
 
             foreach ($ranking as $rank) {
                 $rankedItems[] = $keyedItems[$rank];
@@ -40,6 +39,7 @@ class ParkingSpaceRankerGateway
         } catch (\Throwable $th) {
             Log::info('ParkingSpaceHttpService error: ', [$th]);
         }
+
         return $rankedItems;
     }
 }

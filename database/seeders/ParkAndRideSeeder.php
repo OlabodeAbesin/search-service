@@ -15,7 +15,7 @@ class ParkAndRideSeeder extends Seeder
     public function run()
     {
         ParkAndRide::factory()
-        ->count(50)
-        ->create();
+            ->count(50)
+            ->create();
     }
 }

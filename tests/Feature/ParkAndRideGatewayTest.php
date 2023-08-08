@@ -8,8 +8,8 @@ use App\ThirdParty\ParkAndRide\ParkAndRideSDK;
 use App\ThirdParty\ParkAndRide\RankingRequest;
 use App\ThirdParty\ParkAndRide\RankingResponse;
 use App\ThirdParty\TimeoutException;
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ParkAndRideGatewayTest extends TestCase
 {
