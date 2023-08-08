@@ -1,4 +1,4 @@
-```
+
 # Parking Search Service
 
 The Parking Search Service is a Laravel application that provides an API for searching and ranking parking spaces and park-and-ride locations based on user coordinates.
