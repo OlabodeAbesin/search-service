@@ -74,9 +74,7 @@ php artisan test
 Two endpoints are exposed as below:
 
 
+<img width="1015" alt="Screenshot 2023-08-08 at 12 46 55" src="https://github.com/OlabodeAbesin/search-service/assets/22768889/dee6b0fb-ce70-4f6f-a17d-bfd991dc55dc">
 
-<img width="1007" alt="Screenshot 2023-08-08 at 12 46 31" src="https://github.com/OlabodeAbesin/search-service/assets/22768889/c4d1ebb0-2ec9-41d6-9b53-dff8d79cddf9">
-
-
-![Uploading Screenshot 2023-08-08 at 12.46.55.png…]()
+![Uploading Screenshot 2023-08-08 at 13.26.18.png…]()
 
